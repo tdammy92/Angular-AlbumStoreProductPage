@@ -8,23 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-description.component.css']
 })
 export class ProductDescriptionComponent implements OnInit {
-  albumInfo:{} | any;
+  albumInfo;
   constructor(private _productService:ProductService) { }
 
   ngOnInit() {
 
-    this.getAlbum(1)
 
-  }
+      this._productService.getAlbum(1).subscribe(response =>{
+
+        this.albumInfo = response
+
+      })
 
 
-  getAlbum(id:number):void{
-    this._productService.getAlbum(1).subscribe((response )=>{
 
-      console.log(response)
-      this.albumInfo = response
-
-    })
   }
 
 }
